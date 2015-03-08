@@ -1634,7 +1634,6 @@ static int __cpuinit cpufreq_cpu_callback(struct notifier_block *nfb,
 		case CPU_ONLINE:
 		case CPU_ONLINE_FROZEN:
 			cpufreq_add_dev(dev, NULL);
-			trace_cpu_state_frequency(cpu, 1);
 			break;
 		case CPU_DOWN_PREPARE:
 		case CPU_DOWN_PREPARE_FROZEN:
@@ -1646,10 +1645,8 @@ static int __cpuinit cpufreq_cpu_callback(struct notifier_block *nfb,
 		case CPU_DOWN_FAILED:
 		case CPU_DOWN_FAILED_FROZEN:
 			cpufreq_add_dev(dev, NULL);
-			trace_cpu_state_frequency(cpu, 1);
 			break;
 		case CPU_POST_DEAD:
-			trace_cpu_state_frequency(cpu, 0);
 			break;
 		}
 	}
